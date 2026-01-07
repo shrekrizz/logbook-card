@@ -36,6 +36,7 @@
 - [Example usage](#example-usage)
   - [Hidden states](#hidden-states)
   - [Multiple entities](#multiple-entities)
+  - [Auto entities](#auto-entities)
   - [State label](#state-label)
   - [Attributes and custom date format](#attributes-and-custom-date-format)
   - [Duration labels](#duration-labels)
@@ -378,6 +379,19 @@ title: Sun And Moon
 ```
 
 ![logbook card with multiple entities](images/multiple_entities.png)
+
+#### Auto entities
+You can use [auto-entites](https://github.com/thomasloven/lovelace-auto-entities) if you want to automatically populate the card with entities matching certain criteria.
+
+```yaml
+type: custom:auto-entities
+card:
+  type: custom:multiple-logbook-card
+  hours_to_show: 1
+filter:
+  include:
+    - domain: light
+```
 
 ### State label
 
