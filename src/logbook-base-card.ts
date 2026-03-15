@@ -11,7 +11,7 @@ import { property } from 'lit/decorators.js';
 import { handleAction, ActionHandlerEvent, hasAction } from 'custom-card-helpers';
 import { actionHandler } from './action-handler-directive';
 import { styleMap, StyleInfo } from 'lit/directives/style-map.js';
-import { isSameDay } from './date-helpers';
+import { isSameDay, limitEntriesPerDay } from './date-helpers';
 import { HassEntity } from 'home-assistant-js-websocket/dist/types';
 
 export abstract class LogbookBaseCard extends LitElement {
@@ -43,7 +43,9 @@ export abstract class LogbookBaseCard extends LitElement {
   abstract updateHistory(): void;
 
   renderHistory(items: HistoryOrCustomLogEvent[] | undefined, config: LogbookCardConfigBase): TemplateResult {
-    if (!items || items?.length === 0) {
+    const displayedItems = items && config.group_by_day ? limitEntriesPerDay(items, config.max_entries_per_day) : items;
+
+    if (!displayedItems || displayedItems.length === 0) {
       return html`
         <p>
           ${config.no_event}
@@ -51,20 +53,20 @@ export abstract class LogbookBaseCard extends LitElement {
       `;
     }
 
-    if (config.collapse && items.length > config.collapse) {
+    if (config.collapse && displayedItems.length > config.collapse) {
       const elemId = `expander${Math.random()
         .toString(10)
         .substring(2)}`;
       return html`
-        ${this.renderHistoryItems(items.slice(0, config.collapse), undefined, config)}
+        ${this.renderHistoryItems(displayedItems.slice(0, config.collapse), undefined, config)}
         <input type="checkbox" class="expand" id="${elemId}" />
         <label for="${elemId}"><div>&lsaquo;</div></label>
         <div>
-          ${this.renderHistoryItems(items.slice(config.collapse), items[config.collapse], config)}
+          ${this.renderHistoryItems(displayedItems.slice(config.collapse), displayedItems[config.collapse], config)}
         </div>
       `;
     } else {
-      return this.renderHistoryItems(items, undefined, config);
+      return this.renderHistoryItems(displayedItems, undefined, config);
     }
   }
 

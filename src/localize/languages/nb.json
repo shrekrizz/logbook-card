@@ -2,6 +2,7 @@
   "common": {
     "version": "Versjon",
     "invalid_configuration": "Ikke gyldig konfiguration",
-    "show_warning": "Vis advarsel"
+    "show_warning": "Vis advarsel",
+    "invalid_max_entries_per_day": "max_entries_per_day må være et heltall"
   }
 }

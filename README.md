@@ -96,6 +96,7 @@ resources:
 | double_tap_action | [action object](#action-options)                          | optional     | v1.7.0  |            | none                     | Action to take on double tap                                                                                                                 |
 | minimal_duration  | number (in seconds)                                       | optional     | v1.11.0 |            |                          | Filter entry if duration is less than `minimal_duration` (entry will be squash if previous and next entry has same state)                    |
 | group_by_day      | boolean                                                   | optional     | v2.0.0  |            | false                    | Group entries by day using a day separator                                                                                                   |
+| max_entries_per_day | integer                                                 | optional     | v2.6.0  |            |                          | Maximum number of entries to display for each day when `group_by_day` is `true`. Ignored if `< 1`                                           |
 
 #### Multiple entities Logbook Card options
 
@@ -123,6 +124,7 @@ the `custom:multiple-logbook-card` card has been introduce in v2.0.0.
 | double_tap_action | [action object](#action-options)                  | optional     | v2.0.0 |            | none                           | Action to take on double tap                                                                                                                 |
 | minimal_duration  | number (in seconds)                               | optional     | v2.0.0 |            |                                | Filter entry if duration is less than `minimal_duration` (entry will be squash if previous and next entry has same state)                    |
 | group_by_day      | boolean                                           | optional     | v2.0.0 |            | false                          | Group entries by day using a day separator                                                                                                   |
+| max_entries_per_day | integer                                         | optional     | v2.6.0 |            |                                | Maximum number of entries to display for each day when `group_by_day` is `true`. Ignored if `< 1`                                           |
 
 #### Entity object
 
@@ -505,6 +507,7 @@ type: 'custom:logbook-card'
 entity: sensor.logger
 type: custom:logbook-card
 group_by_day: true
+max_entries_per_day: 3
 scroll: true
 show_history: false
 date_format: relative

@@ -5,6 +5,7 @@
     "invalid_configuration": "Invalid configuration",
     "show_warning": "Show Warning",
     "invalid_max_items": "max_items must be an integer",
+    "invalid_max_entries_per_day": "max_entries_per_day must be an integer",
     "invalid_desc": "desc must be a boolean",
     "invalid_collapse": "collapse must be a positive integer",
     "invalid_minimal_duration": "minimal_duration must be a positive integer",

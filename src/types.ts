@@ -18,6 +18,7 @@ export interface LogbookCardConfigBase extends LovelaceCardConfig {
   desc?: boolean;
   duration?: DurationConfig;
   group_by_day?: boolean;
+  max_entries_per_day?: number;
   max_items?: number;
   minimal_duration?: number;
   no_event?: string;

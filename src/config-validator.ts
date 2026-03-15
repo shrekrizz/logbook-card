@@ -8,6 +8,9 @@ export const checkBaseConfig = (config: LogbookCardConfigBase): void => {
   if (config.max_items !== undefined && !Number.isInteger(config.max_items)) {
     throw new Error(localize('common.invalid_max_items'));
   }
+  if (config.max_entries_per_day !== undefined && !Number.isInteger(config.max_entries_per_day)) {
+    throw new Error(localize('common.invalid_max_entries_per_day'));
+  }
   if (config.desc && typeof config.desc !== 'boolean') {
     throw new Error(localize('common.invalid_desc'));
   }

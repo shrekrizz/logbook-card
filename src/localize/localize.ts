@@ -10,6 +10,18 @@ const languages = {
 
 const fallbackLanguage = 'en';
 
+const getStorage = (): Pick<Storage, 'getItem'> | undefined => {
+  if (typeof window !== 'undefined' && window.localStorage?.getItem) {
+    return window.localStorage;
+  }
+
+  if (typeof globalThis !== 'undefined' && globalThis.localStorage?.getItem) {
+    return globalThis.localStorage;
+  }
+
+  return undefined;
+};
+
 const isLanguageSupported = (language: string): boolean => {
   return Object.keys(languages).includes(language);
 };
@@ -21,8 +33,9 @@ const translationExistsForLanguage = (section: string, key: string, language: st
 export function localize(string: string, search = '', replace = ''): string {
   const section = string.split('.')[0];
   const key = string.split('.')[1];
+  const storage = getStorage();
 
-  let language = (localStorage.getItem('selectedLanguage') || 'en').replace(/['"]+/g, '').replace('-', '_');
+  let language = (storage?.getItem('selectedLanguage') || 'en').replace(/['"]+/g, '').replace('-', '_');
   if (!isLanguageSupported(language) || !translationExistsForLanguage(section, key, language)) {
     language = fallbackLanguage;
   }

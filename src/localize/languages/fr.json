@@ -5,6 +5,7 @@
     "invalid_configuration": "Configuration invalide",
     "show_warning": "Afficher les warning",
     "invalid_max_items": "max_items doit être un entier",
+    "invalid_max_entries_per_day": "max_entries_per_day doit être un entier",
     "invalid_desc": "desc doit être un booléen",
     "invalid_collapse": "collapse doit être un entier positif",
     "invalid_minimal_duration": "minimal_duration doit être un entier positif",
