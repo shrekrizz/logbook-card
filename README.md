@@ -1,12 +1,6 @@
 # Logbook card
 
-[![hacs][hacs-badge]][hacs-url]
-[![release][release-badge]][release-url]
-![downloads][downloads-badge]
-
-<a href="https://www.buymeacoffee.com/royto" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
-
-2 customs [Lovelace](https://www.home-assistant.io/lovelace/) cards for displaying history of an entity or multiple entities for [Home Assistant](https://www.home-assistant.io/).
+2 custom [Lovelace](https://www.home-assistant.io/lovelace/) cards for displaying history of an entity or multiple entities for [Home Assistant](https://www.home-assistant.io/).
 
 ![logbook card example](images/screenshot.png)
 
